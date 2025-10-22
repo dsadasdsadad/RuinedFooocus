@@ -130,9 +130,10 @@ def launch_app(args):
 
     shared.server_app, shared.local_url, shared.share_url = main_tabs.launch(
         inbrowser=inbrowser,
-        server_name=args.listen,
+        server_name="0.0.0.0",        # SỬA ĐỔI: Ép buộc lắng nghe trên mọi kết nối
         server_port=args.port,
-        share=args.share,
+        share=True,                  # SỬA ĐỔI: Ép buộc chia sẻ công khai để sửa lỗi 404
+        debug=True,                  # THÊM VÀO: Bật chế độ debug để xem lỗi chi tiết
         auth=(
             args.auth.split("/", 1)
             if isinstance(args.auth, str) and "/" in args.auth
